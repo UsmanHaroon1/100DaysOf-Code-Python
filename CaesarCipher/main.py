@@ -27,19 +27,20 @@ def decrypt(text,shift):
 
 def caesar(start_text,shift,direction):
     res.clear()
+    shift=shift%len(alphabet)
     if(direction=="decode"):
         shift*=-1
     for l in start_text:
-        if (l == ' '):
-            res.append(' ')
+        if (l not in alphabet):
+            res.append(l)
             continue;
         nidx = alphabet.index(l) + shift
-        if (nidx < 0):
-            nidx = nidx + len(alphabet)
-        if (nidx >= 26):
-           nidx = nidx - len(alphabet)
         res.append(alphabet[nidx])
     return res
+
+import art
+
+print(art.logo)
 
 direction=""
 while(direction != "exit"):
@@ -53,10 +54,6 @@ while(direction != "exit"):
     shift = int(input("Type the shift number:\n"))
 
     print(f"The {direction}d text is:{''.join(caesar(text, shift,direction))}")
-    # if(direction == "encode"):
-    #     print(f"The encrypted text is:{''.join(encrypt(text, shift))}")
-    # elif(direction=="decode"):
-    #     print(f"The decrypted text is:{''.join(decrypt(text, shift))}")
 
 print("Exit!!")
 
