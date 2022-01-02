@@ -20,6 +20,9 @@ class Snake:
         snake_segment.goto(position)
         return snake_segment
 
+    def addSegment(self):
+        self.segments.append(self.createsnake(self.segments[-1].position()))
+
     def moveforward(self):
         for seg_num in range(len(self.segments) - 1, 0, -1):
             x = self.segments[seg_num - 1].xcor()
@@ -42,3 +45,6 @@ class Snake:
     def left(self):
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
+
+    def initial(self):
+        self.head.goto(0,0)
