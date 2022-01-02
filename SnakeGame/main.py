@@ -17,10 +17,21 @@ screen.onkey(snake.up,"Up")
 screen.onkey(snake.down, "Down")
 screen.onkey(snake.right, "Right")
 screen.onkey(snake.left, "Left")
+screen.onkey(snake.initial,"space")
 is_game_on = True
 while is_game_on:
     screen.update()
     time.sleep(0.1)
     snake.moveforward()
 
+    if snake.head.distance(food)<15:
+        food.refreshposition()
+        snake.addSegment()
+        screen.update()
+
+    for segment in range(2,len(snake.segments)):
+        if snake.head.distance(snake.segments[segment]) < 15:
+            is_game_on = False
+
+print('Game over')
 screen.exitonclick()
