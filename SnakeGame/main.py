@@ -26,6 +26,7 @@ while is_game_on:
     time.sleep(0.2)
     snake.moveforward()
 
+    #Collision with food
     if snake.head.distance(food)<15:
         food.refreshposition()
         snake.addSegment()
@@ -34,12 +35,18 @@ while is_game_on:
         score.display()
         screen.update()
 
-    for segment in range(2,len(snake.segments)):
-        if snake.head.distance(snake.segments[segment]) < 15:
+    # Collision with tail
+    for segment in snake.segments[1::]:
+        if snake.head.distance(segment) < 15:
             is_game_on = False
 
+    # Collision with wall
     if snake.head.xcor() > 298 or snake.head.xcor() < -298 or snake.head.ycor() > 298 or snake.head.ycor() < -298:
         is_game_on = False
 
 score.gameover()
+
+if score.cs > score.hs:
+    with open("highscore.txt",'w') as f:
+        f.write(str(score.cs))
 screen.exitonclick()
