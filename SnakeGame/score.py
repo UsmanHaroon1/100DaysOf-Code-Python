@@ -16,8 +16,8 @@ class Score(Turtle):
         self.display()
 
     def display(self):
-        self.write(f"Score:{self.cs}",move=False,align="right",font=('Arial', 15, 'normal'))
-        self.write(f"HighScore:{self.hs}",move=False,align="left",font=('Arial', 15, 'normal'))
+        self.write(f"Score:{self.cs} | HighScore:{self.hs}",move=False,align="right",font=('Arial', 15, 'normal'))
+        
     def gameover(self):
         self.goto(0,0)
         self.write(f"GameOver", False, align="center",font=('Arial', 30, 'normal'))
