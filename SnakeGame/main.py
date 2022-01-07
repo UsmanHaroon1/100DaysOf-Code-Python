@@ -7,7 +7,7 @@ screen = Screen()
 screen.setup(width=600,height=600)
 screen.title('Welcome to Snake game')
 screen.bgcolor('black')
-colors = ('red','green','orange')
+colors = ('red','green','purple')
 screen.tracer(0)
 
 snake = Snake()
