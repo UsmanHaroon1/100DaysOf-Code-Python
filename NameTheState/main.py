@@ -14,7 +14,7 @@ answer = ""
 while answer != 'Exit':
     answer = screen.textinput("Guess the state", "Enter the state name").title()
     screen.onscreenclick
-    if answer == 'Exit' or answer == 0:
+    if answer == 'Exit':
         break
     states = data.state.to_list()
     if answer in states:
